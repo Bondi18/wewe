@@ -103,8 +103,29 @@ new JustValidate('.form', {
             required: "ошибка"
         },
         mail: "ошибка"
+    },
+
+    submitHandler: function (thisForm) {
+        let formData = new FormData(thisForm);
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    console.log('Отправлено');
+                }
+            }
+        }
+
+        xhr.open('POST', 'mail.php', true);
+        xhr.send(formData);
+
+        thisForm.reset();
     }
 });
+
+
 
 
 
@@ -161,5 +182,86 @@ cask.addEventListener('click', () => {
 })
 
 
+let headerBtn = document.querySelector('.header-top__btn');
+let reg = document.querySelector('.reg');
+let regPhone = document.querySelector('.phone');
+let regExit = document.querySelector('.reg__exit');
+let headerUpperBtn = document.querySelector('.header__upper-btn');
 
 
+headerBtn.addEventListener('click', () => {
+    reg.classList.toggle('reg--active');
+    regPhone.classList.toggle('phone--active');
+})
+
+regExit.addEventListener('click', () => {
+    reg.classList.toggle('reg--active');
+    regPhone.classList.toggle('phone--active');
+})
+
+
+headerUpperBtn.addEventListener('click', () => {
+    reg.classList.toggle('reg--active');
+    regPhone.classList.toggle('phone--active');
+})
+
+
+
+
+
+
+document.querySelectorAll('.js-scroll-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const href = this.getAttribute('href').substring(1);
+        const scrollTarget = document.getElementById(href);
+        const elementPosition = scrollTarget.getBoundingClientRect().top;
+
+        window.scrollBy({
+            top: elementPosition,
+            behavior: 'smooth'
+        });
+    });
+});
+
+
+
+
+(() => {
+    const MOBILE_WIDTH = 576;
+
+    function getWindowWidth() {
+        return Math.max(
+            document.body.scrollWidth,
+            document.documentElement.scrollWidth,
+            document.body.offsetWidth,
+            document.documentElement.offsetWidth,
+            document.body.clientWidth,
+            document.documentElement.clientWidth
+        );
+    }
+
+    function scrollToContent(link, isMobile) {
+        if (isMobile && getWindowWidth() > MOBILE_WIDTH) {
+            return;
+        }
+
+        const href = link.getAttribute('href').substring(1);
+        const scrollTarget = document.getElementById(href);
+        const elementPosition = scrollTarget.getBoundingClientRect().top;
+
+        window.scrollBy({
+            top: elementPosition,
+            behavior: 'smooth'
+        });
+    }
+
+    document.querySelectorAll('.js-scroll-link-mobile').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            scrollToContent(this, true);
+        });
+    });
+})();
