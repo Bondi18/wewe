@@ -717,6 +717,10 @@ body {
 
 /**Hero**/
 
+.hero {
+    background-color: #FFFFFF;
+}
+
 .hero__wrapper {
     background-image: url('../img/hero__micro.png');
     background-repeat: no-repeat;
@@ -843,6 +847,7 @@ body {
 }
 
 .podcasts__elem-wrapper {
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -885,14 +890,78 @@ body {
     line-height: 16px;
 }
 
+.podcasts__elem-btn {
+    position: relative;
+    right: 33px;
+    bottom: 33px;
+}
+
 .podcasts__elem-btn:focus {
     outline: none;
 }
 
 .podcasts__elem-btn__svg {
+    position: absolute;
     fill: transparent;
-    transition: fill 0.3s ease-in-out;
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
 }
+
+.podcasts__elem-btn__svg--active {
+    opacity: 0;
+}
+
+.podcasts__elem-btn__svg2 {
+    position: absolute;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.podcasts__elem-btn__svg2--active {
+    opacity: 1;
+}
+
+
+
+
+
+.podcasts__elem-btn__svg2 circle {
+    stroke: #A1A6B4;
+    transition: all 0.3s ease-in-out;
+}
+
+.podcasts__elem-btn__svg2 rect {
+    fill: #A1A6B4;
+    transition: all 0.3s ease-in-out;
+}
+
+.podcasts__elem-btn:focus-visible .podcasts__elem-btn__svg2 circle {
+    stroke: #AA9DFA;
+}
+
+.podcasts__elem-btn:focus-visible .podcasts__elem-btn__svg2 rect {
+    fill: #AA9DFA;
+}
+
+.podcasts__elem-btn:hover .podcasts__elem-btn__svg2 circle {
+    stroke: #6D31EE;
+}
+
+.podcasts__elem-btn:hover .podcasts__elem-btn__svg2 rect {
+    fill: #6D31EE;
+}
+
+.podcasts__elem-btn:active .podcasts__elem-btn__svg2 circle {
+    stroke: #4F28A5;
+}
+
+.podcasts__elem-btn:active .podcasts__elem-btn__svg2 rect {
+    fill: #4F28A5;
+}
+
+
+
+
 
 .podcasts__elem-btn__circle {
     stroke: #A1A6B4;
@@ -958,9 +1027,9 @@ body {
 .podcasts__item-btn::after {
     content: '';
     position: absolute;
-    top: -2px;
+    top: -6px;
     right: -5px;
-    bottom: -1px;
+    bottom: 0px;
     left: -5px;
     z-index: -1;
     opacity: 0;
@@ -1081,6 +1150,7 @@ body {
 .transfers {
     padding-top: 108px;
     padding-bottom: 62px;
+    background-color: #FFFFFF;
 }
 
 .transfers__container {
@@ -1099,6 +1169,10 @@ body {
 }
 
 .is-focused .choices__inner {
+    border-color: #6D31EE;
+}
+
+.is-focused .choices__item .is-highlighted {
     background-color: red;
 }
 
@@ -1779,6 +1853,10 @@ body {
 /***guests***/
 
 /***playlists***/
+
+.playlists {
+    background-color: #FFFFFF;
+}
 
 .playlists__container {
     padding-top: 94px;
