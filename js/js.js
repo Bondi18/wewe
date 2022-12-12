@@ -53,23 +53,26 @@ const swiper = new Swiper('.swiper', {
     },
     spaceBetween: 30,
     breakpoints: {
-
         1250: {
             slidesPerView: 4,
         },
 
         576: {
+            slidesPerView: 2,
             spaceBetween: 30,
         },
 
         200: {
+            slidesPerView: 2,
             spaceBetween: 11,
         }
-
-
-
     }
+    
 });
+
+
+
+
 
 const swiperPlay = new Swiper('.playlists__swiper', {
 
@@ -113,7 +116,7 @@ new JustValidate('.form', {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    console.log('Отправлено');
+                    alert("Успешно отправлено");
                 }
             }
         }
@@ -265,3 +268,24 @@ document.querySelectorAll('.js-scroll-link').forEach(link => {
         });
     });
 })();
+
+
+let podcastBtn = document.querySelectorAll('.podcasts__elem-btn');
+
+
+
+
+podcastBtn.forEach(function (element) {
+    element.addEventListener("click", ({ currentTarget }) => {
+        currentTarget
+            .querySelector(".podcasts__elem-btn__svg")
+            .classList.toggle("podcasts__elem-btn__svg--active");
+        currentTarget
+            .querySelector(".podcasts__elem-btn__svg2")
+            .classList.toggle("podcasts__elem-btn__svg2--active");
+    });
+});
+
+
+
+
